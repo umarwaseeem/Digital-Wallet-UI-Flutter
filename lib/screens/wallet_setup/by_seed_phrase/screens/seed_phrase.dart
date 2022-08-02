@@ -162,7 +162,7 @@ class _SeedPhraseState extends State<SeedPhrase> {
                             : const Color.fromRGBO(56, 70, 87, 1),
                         onPressed: buttonEnabled
                             ? () {
-                                Navigator.pushNamed(
+                                Navigator.pushReplacementNamed(
                                     context, HomeScreen.routeName);
                               }
                             : null,
@@ -181,3 +181,4 @@ class _SeedPhraseState extends State<SeedPhrase> {
     );
   }
 }
+
