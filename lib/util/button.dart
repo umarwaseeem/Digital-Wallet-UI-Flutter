@@ -10,7 +10,8 @@ class Button extends StatelessWidget {
     Key? key,
     required this.text,
     required this.buttonColor,
-    required this.onPressed, required this.textColor,
+    required this.onPressed,
+    required this.textColor,
   }) : super(key: key);
 
   @override
@@ -34,9 +35,9 @@ class Button extends StatelessWidget {
         ),
         child: Text(
           text,
-          style:  TextStyle(
+          style: TextStyle(
             color: textColor,
-            fontWeight: FontWeight.w400,
+            fontWeight: FontWeight.w500,
             fontSize: 20,
           ),
         ),

@@ -19,6 +19,7 @@ Future<dynamic> createNewAccountBottomSheet(BuildContext context) {
                     },
                     icon: const Icon(
                       Icons.arrow_back_ios_new_sharp,
+                      size: 15,
                       color: Colors.white,
                     ),
                   ),
@@ -88,7 +89,7 @@ Future<dynamic> createNewAccountBottomSheet(BuildContext context) {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.only(top: 50),
+                margin: const EdgeInsets.only(top: 50, bottom: 30),
                 child: Button(
                   text: "Create",
                   buttonColor: const Color.fromRGBO(223, 187, 6, 1),

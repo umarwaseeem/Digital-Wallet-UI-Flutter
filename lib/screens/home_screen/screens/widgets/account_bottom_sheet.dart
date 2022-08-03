@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'account_tile.dart';
 import 'create_new_account_bottom_sheet.dart';
+import 'import_account_bottom_sheet.dart';
 
 Future<dynamic> accountBottomSheet(BuildContext context) {
   return showModalBottomSheet(
@@ -60,7 +61,9 @@ Future<dynamic> accountBottomSheet(BuildContext context) {
               "Import Account",
               style: TextStyle(fontWeight: FontWeight.w500),
             ),
-            onPressed: () {},
+            onPressed: () {
+              importAccontBottomSheet(context);
+            },
           ),
           const SizedBox(height: 20),
         ],
