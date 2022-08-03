@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:leew_wallet/util/snackbar.dart';
 
 class Network {
   String name;
@@ -47,6 +48,9 @@ class NetworkProvider extends ChangeNotifier{
 
   void selectNetwork(String title){
 
+    //  display snack bar when this function is called
+
+
     String alreadySelectedNetworkName = networks.firstWhere((element) => element.selected).name;
 
     if (title == alreadySelectedNetworkName) {
@@ -61,6 +65,9 @@ class NetworkProvider extends ChangeNotifier{
         }
         notifyListeners();
     }
+
+    
+
   }
   
 }

@@ -5,7 +5,6 @@ import '../widgets/chips.dart';
 import '../widgets/profile_picture.dart';
 import '../widgets/text_with_button.dart';
 import 'widgets/account_bottom_sheet.dart';
-import 'widgets/account_tile.dart';
 
 class WalletScreen extends StatelessWidget {
   const WalletScreen({Key? key}) : super(key: key);
