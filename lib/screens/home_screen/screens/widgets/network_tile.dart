@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:leew_wallet/screens/home_screen/screens/widgets/network_provider.dart';
 import 'package:provider/provider.dart';
@@ -27,6 +29,24 @@ class _NetworkTileState extends State<NetworkTile> {
       onTap: () {
         networkData.selectNetwork(widget.title);
         Navigator.pop(context);
+
+        // show alert dialog with "${widget.title} selected"
+        showDialog(
+          context: context,
+          builder: (context) {
+            Future.delayed(const Duration(seconds: 1), () {
+              Navigator.of(context).pop(true);
+            });
+            return BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+              child: AlertDialog(
+                backgroundColor: Colors.black87,
+                title: Text("${widget.title} selected",
+                    style: const TextStyle(color: Colors.white)),
+              ),
+            );
+          },
+        );
       },
       leading: CircleAvatar(
         backgroundColor: widget.leadingColor,
