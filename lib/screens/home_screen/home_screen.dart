@@ -17,21 +17,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
 
-  Widget giveMeScreen(int index) {
-    switch (index) {
-      case 0:
-        return const WalletScreen();
-      case 1:
-        return const SwapScreen();
-      case 2:
-        return const DAppScreen();
-      case 3:
-        return const SettingsScreen();
-      default:
-        return const WalletScreen();
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -65,7 +50,15 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
-        body: giveMeScreen(_currentIndex),
+        body: IndexedStack(
+          index: _currentIndex,
+          children: const [
+            WalletScreen(),
+            SwapScreen(),
+            DAppScreen(),
+            SettingsScreen(),
+          ],
+        ),
       ),
     );
   }

@@ -5,14 +5,12 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: const Center(
-        child: Text(
-          "Settings",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 50,
-          ),
+    return const Center(
+      child: Text(
+        "Settings",
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 50,
         ),
       ),
     );

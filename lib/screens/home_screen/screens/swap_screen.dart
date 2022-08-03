@@ -5,14 +5,12 @@ class SwapScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: const Center(
-        child: Text(
-          "Swap",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 50,
-          ),
+    return const Center(
+      child: Text(
+        "Swap",
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 50,
         ),
       ),
     );

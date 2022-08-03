@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:leew_wallet/screens/home_screen/home_screen.dart';
 
-import 'screens/walkthrough_screens/walkthrough.dart';
 import 'screens/wallet_setup/by_seed_phrase/screens/seed_phrase.dart';
 import 'screens/wallet_setup/wallet_setup.dart';
 
@@ -17,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Leew Wallet',
-      home: const Walkthrough(),
+      home: const HomeScreen(),
       theme: ThemeData(
         fontFamily: "Archivo",
         scaffoldBackgroundColor: const Color.fromRGBO(8, 10, 12, 1),

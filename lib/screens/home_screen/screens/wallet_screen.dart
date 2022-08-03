@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:leew_wallet/screens/home_screen/screens/widgets/token_info_tile.dart';
 
 import '../widgets/chips.dart';
 import '../widgets/profile_picture.dart';
 import '../widgets/text_with_button.dart';
+import 'widgets/account_bottom_sheet.dart';
+import 'widgets/account_tile.dart';
 
 class WalletScreen extends StatelessWidget {
   const WalletScreen({Key? key}) : super(key: key);
@@ -27,14 +30,19 @@ class WalletScreen extends StatelessWidget {
           children: [
             const SizedBox(height: 50),
             Row(
-              children: const [
-                SizedBox(width: 20),
-                ProfilePicture(),
-                SizedBox(width: 95),
-                TextWithButton(),
+              children: [
+                const SizedBox(width: 20),
+                GestureDetector(
+                  child: const ProfilePicture(),
+                  onTap: () {
+                    accountBottomSheet(context);
+                  },
+                ),
+                const SizedBox(width: 95),
+                const TextWithButton(),
               ],
             ),
-            const SizedBox(height: 80),
+            const SizedBox(height: 50),
             const Text(
               "9.2632 ETH",
               style: TextStyle(color: Colors.blue, fontSize: 45),
@@ -60,10 +68,60 @@ class WalletScreen extends StatelessWidget {
               children: const [
                 ChipWidget(icon: Icons.send, title: "Sent"),
                 SizedBox(width: 15),
-                ChipWidget(icon: Icons.send, title: "Received"),
+                ChipWidget(icon: Icons.receipt, title: "Received"),
                 SizedBox(width: 15),
                 ChipWidget(icon: Icons.money, title: "Buy"),
               ],
+            ),
+            const SizedBox(height: 30),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: const [
+                Text(
+                  "Token",
+                  style: TextStyle(color: Colors.white, fontSize: 18),
+                ),
+                // SizedBox
+                Text(
+                  "Collectibles",
+                  style: TextStyle(color: Colors.blueGrey, fontSize: 18),
+                ),
+              ],
+            ),
+            const SizedBox(height: 10),
+            Expanded(
+              child: Container(
+                margin: const EdgeInsets.only(bottom: 40, right: 10, left: 10),
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: 5,
+                  itemBuilder: (context, index) {
+                    return const TokenInfoTile(
+                      coinName: "Binance Coin",
+                      coinSymbol: "assets/images/image4.png",
+                      coinAmount: "19.2371 BNB",
+                      dollars: "\$226.69",
+                      percentage: "+2%",
+                    );
+                  },
+                ),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(right: 50, left: 50, bottom: 10),
+              child: TextButton(
+                onPressed: () {},
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Icon(Icons.add, color: Colors.blue),
+                    Text(
+                      "Add Tokens",
+                      style: TextStyle(color: Colors.blue, fontSize: 18),
+                    ),
+                  ],
+                ),
+              ),
             )
           ],
         ),
