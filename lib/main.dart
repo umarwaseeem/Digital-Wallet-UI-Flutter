@@ -3,6 +3,8 @@ import 'package:leew_wallet/screens/home_screen/home_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'screens/home_screen/screens/widgets/network_provider.dart';
+import 'screens/home_screen/screens/widgets/token_info_tile_provider.dart';
+import 'screens/home_screen/screens/widgets/transaction_item_provider.dart';
 import 'screens/wallet_setup/by_seed_phrase/screens/seed_phrase.dart';
 import 'screens/wallet_setup/wallet_setup.dart';
 
@@ -20,7 +22,12 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<NetworkProvider>(
           create: (_) => NetworkProvider(),
         ),
-
+        ChangeNotifierProvider<TransactionProvider>(
+          create: (_) => TransactionProvider(),
+        ),
+        ChangeNotifierProvider<TokenProvider>(
+          create: (_) => TokenProvider(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
