@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:leew_wallet/screens/wallet_setup/new_wallet/create_new_wallet_screen.dart';
 import 'package:leew_wallet/util/button.dart';
 
 import '../walkthrough_screens/pages/widgets/screen_text.dart';
@@ -43,7 +44,10 @@ class WalletSetup extends StatelessWidget {
                 textColor: Colors.white,
                 text: "Create A New Wallet",
                 buttonColor: const Color.fromRGBO(223, 187, 6, 1),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context)
+                      .pushNamed(CreateNewWalletScreen.routeName);
+                },
               ),
             ],
           ),

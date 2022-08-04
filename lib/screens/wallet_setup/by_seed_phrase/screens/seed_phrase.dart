@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:leew_wallet/screens/home_screen/home_screen.dart';
+import 'package:leew_wallet/util/sign_with_face.dart';
 
 import '../../../../util/button.dart';
 import 'widgets/input_field.dart';
-import 'widgets/switch_button.dart';
 import 'widgets/terms_text.dart';
 
 class SeedPhrase extends StatefulWidget {
@@ -31,11 +31,22 @@ class _SeedPhraseState extends State<SeedPhrase> {
     _confirmPassword.text = "";
     _referralCodeController.text = "";
 
-    _confirmPassword.addListener(() {
-      setState(() {
-        buttonEnabled = _formKey.currentState!.validate();
-      });
-    });
+    // _seedPhraseController.addListener(() {
+    //   setState(() {
+    //     buttonEnabled = _formKey.currentState!.validate();
+    //   });
+    // });
+
+    // _confirmPassword.addListener(() {
+    //   setState(() {
+    //     buttonEnabled = _formKey.currentState!.validate();
+    //   });
+    // });
+    // _passwordController.addListener(() {
+    //   setState(() {
+    //     buttonEnabled = _formKey.currentState!.validate();
+    //   });
+    // });
     super.initState();
   }
 
@@ -64,6 +75,12 @@ class _SeedPhraseState extends State<SeedPhrase> {
         body: SingleChildScrollView(
           child: Center(
             child: Form(
+              onChanged: () {
+                setState(() {
+                  buttonEnabled = _formKey.currentState!.validate();
+                });
+              },
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               key: _formKey,
               child: Container(
                 margin: const EdgeInsets.only(left: 24, right: 24),
@@ -134,26 +151,10 @@ class _SeedPhraseState extends State<SeedPhrase> {
                       hintText: "Referral Code (Optional)",
                     ),
                     const SizedBox(height: 36),
-                    Container(
-                      margin: const EdgeInsets.only(left: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text(
-                            "Sign In With Face ID ?",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          SwitchButton(isSwitch: isSwitch),
-                        ],
-                      ),
-                    ),
+                    const SignWithFace(),
                     const SizedBox(height: 36),
                     const TermsText(),
-                    const SizedBox(height: 90),
+                    const SizedBox(height: 50),
                     Center(
                       child: Button(
                         text: "Import",
@@ -181,4 +182,3 @@ class _SeedPhraseState extends State<SeedPhrase> {
     );
   }
 }
-
