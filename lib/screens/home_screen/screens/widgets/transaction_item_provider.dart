@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'transaction_bottom_sheet.dart';
+
 class TransactionItem extends StatelessWidget {
   const TransactionItem({
     Key? key,
@@ -23,48 +25,71 @@ class TransactionItem extends StatelessWidget {
     return Expanded(
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        child: ListTile(
-          title: Text(
-            transactionType,
-            style: const TextStyle(
-                fontSize: 18, color: Colors.white, fontWeight: FontWeight.w500),
-          ),
-          leading: Icon(
-            transactionType == "Sent" ? Icons.send : Icons.wallet,
-            color: Colors.white,
-            size: 30,
-          ),
-          trailing: Container(
-            margin: const EdgeInsets.all(5),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  "$transactionAmount $tokenAbbreviation",
-                  style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500),
-                ),
-                Text(
-                  "\$ $dollarAmount",
-                  style: const TextStyle(
-                      color: Colors.grey,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400),
-                ),
-              ],
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              dateAndTime,
+              style: const TextStyle(color: Colors.grey, fontSize: 14),
             ),
-          ),
-          subtitle: status
-              ? const Text(
-                  "Confirmed",
-                  style: TextStyle(color: Colors.green),
-                )
-              : const Text(
-                  "Cancelled",
-                  style: TextStyle(color: Colors.red),
+            ListTile(
+              onTap: () {
+                showTransactionBottomSheet(
+                    context,
+                    transactionType,
+                    transactionAmount,
+                    dollarAmount,
+                    tokenAbbreviation,
+                    status,
+                    dateAndTime);
+              },
+              visualDensity: VisualDensity.standard,
+              contentPadding: const EdgeInsets.symmetric(vertical: 10),
+              title: Text(
+                "$transactionType $tokenAbbreviation",
+                style: const TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500),
+              ),
+              leading: Icon(
+                transactionType == "Sent" ? Icons.send : Icons.wallet,
+                color: Colors.white,
+                size: 30,
+              ),
+              trailing: Container(
+                margin: const EdgeInsets.all(5),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      "$transactionAmount $tokenAbbreviation",
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500),
+                    ),
+                    Text(
+                      "\$ $dollarAmount",
+                      style: const TextStyle(
+                          color: Colors.grey,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400),
+                    ),
+                  ],
                 ),
+              ),
+              subtitle: status
+                  ? const Text(
+                      "Confirmed",
+                      style: TextStyle(color: Colors.green),
+                    )
+                  : const Text(
+                      "Cancelled",
+                      style: TextStyle(color: Colors.red),
+                    ),
+            ),
+          ],
         ),
       ),
     );
@@ -76,7 +101,7 @@ class TransactionProvider extends ChangeNotifier {
     const TransactionItem(
       transactionType: "Sent",
       transactionAmount: 0.5,
-      dollarAmount: 0.5,
+      dollarAmount: 45,
       tokenAbbreviation: "BTC",
       status: true,
       dateAndTime: "2020-01-01 12:00:00",
@@ -84,7 +109,7 @@ class TransactionProvider extends ChangeNotifier {
     const TransactionItem(
       transactionType: "Recieved",
       transactionAmount: 0.5,
-      dollarAmount: 0.5,
+      dollarAmount: 90,
       tokenAbbreviation: "BTC",
       status: false,
       dateAndTime: "2020-01-01 12:00:00",
@@ -92,7 +117,7 @@ class TransactionProvider extends ChangeNotifier {
     const TransactionItem(
       transactionType: "Received",
       transactionAmount: 0.5,
-      dollarAmount: 0.5,
+      dollarAmount: 89,
       tokenAbbreviation: "ETH",
       status: true,
       dateAndTime: "2020-01-01 12:00:00",
@@ -100,7 +125,7 @@ class TransactionProvider extends ChangeNotifier {
     const TransactionItem(
       transactionType: "Sent",
       transactionAmount: 0.5,
-      dollarAmount: 0.5,
+      dollarAmount: 1,
       tokenAbbreviation: "ETH",
       status: false,
       dateAndTime: "2020-01-01 12:00:00",
@@ -108,7 +133,7 @@ class TransactionProvider extends ChangeNotifier {
     const TransactionItem(
       transactionType: "Sent",
       transactionAmount: 0.5,
-      dollarAmount: 0.5,
+      dollarAmount: 34,
       // Dodgecoin tokenAbbreviation
       tokenAbbreviation: "LTC",
       status: true,
@@ -117,7 +142,7 @@ class TransactionProvider extends ChangeNotifier {
     const TransactionItem(
       transactionType: "Received",
       transactionAmount: 0.5,
-      dollarAmount: 0.5,
+      dollarAmount: 123,
       // Dodgecoin tokenAbbreviation
       tokenAbbreviation: "LTC",
       status: false,
@@ -126,7 +151,7 @@ class TransactionProvider extends ChangeNotifier {
     const TransactionItem(
       transactionType: "Received",
       transactionAmount: 0.5,
-      dollarAmount: 0.5,
+      dollarAmount: 2135,
       tokenAbbreviation: "DGC",
       status: true,
       dateAndTime: "2020-01-01 12:00:00",
@@ -134,7 +159,7 @@ class TransactionProvider extends ChangeNotifier {
     const TransactionItem(
       transactionType: "Sent",
       transactionAmount: 0.5,
-      dollarAmount: 0.5,
+      dollarAmount: 23,
       tokenAbbreviation: "DGC",
       status: false,
       dateAndTime: "2020-01-01 12:00:00",

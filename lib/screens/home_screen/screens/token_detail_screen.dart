@@ -90,21 +90,10 @@ class TokenDetailScreen extends StatelessWidget {
                 const SizedBox(height: 25),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        transactionProviderData.toggleShowSentOnly();
-                      },
-                      child: const ChipWidget(icon: Icons.send, title: "Sent"),
-                    ),
-                    const SizedBox(width: 15),
-                    InkWell(
-                      onTap: () {
-                        transactionProviderData.toggleShowReceivedOnly();
-                      },
-                      child: const ChipWidget(
-                          icon: Icons.receipt, title: "Received"),
-                    ),
+                  children: const [
+                    ChipWidget(icon: Icons.send, title: "Sent"),
+                    SizedBox(width: 15),
+                    ChipWidget(icon: Icons.receipt, title: "Received"),
                   ],
                 ),
                 const SizedBox(height: 30),
