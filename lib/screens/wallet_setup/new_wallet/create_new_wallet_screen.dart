@@ -40,9 +40,17 @@ class _CreateNewWalletScreenState extends State<CreateNewWalletScreen> {
                   ),
                   child: Stepper(
                     onStepTapped: (index) {
+                      if (index < currentStepNumber) {
+                        setState(() {
+                          currentStepNumber = index;
+                        });
+                        return;
+                      }
+
                       if (index > currentStepNumber) {
                         return;
                       }
+
                       setState(() {
                         currentStepNumber = index;
                       });
@@ -73,10 +81,14 @@ class _CreateNewWalletScreenState extends State<CreateNewWalletScreen> {
                       String buttonText = "";
                       if (currentStepNumber == 0) {
                         buttonText = "Create Password";
-                      } else if (currentStepNumber == 1) {
+                      } else if (currentStepNumber == 1 ||
+                          currentStepNumber == 2 ||
+                          currentStepNumber == 3) {
                         buttonText = "Start";
-                      } else if (currentStepNumber == 2) {
+                      } else if (currentStepNumber == 4) {
                         buttonText = "Next";
+                      } else {
+                        buttonText = "";
                       }
 
                       return Container(
