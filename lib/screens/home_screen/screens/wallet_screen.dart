@@ -6,6 +6,7 @@ import '../widgets/chips.dart';
 import '../widgets/profile_picture.dart';
 import '../widgets/text_with_button.dart';
 import 'widgets/account_bottom_sheet.dart';
+import 'widgets/add_asset_bottom_sheet.dart';
 
 class WalletScreen extends StatelessWidget {
   const WalletScreen({Key? key}) : super(key: key);
@@ -110,7 +111,9 @@ class WalletScreen extends StatelessWidget {
                   margin:
                       const EdgeInsets.only(right: 50, left: 50, bottom: 10),
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      addAssetBottomSheet(context);
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [

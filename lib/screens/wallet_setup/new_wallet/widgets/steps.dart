@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:leew_wallet/screens/wallet_setup/new_wallet/widgets/AllSteps/step1.dart';
-import 'package:leew_wallet/screens/wallet_setup/new_wallet/widgets/AllSteps/step3.dart';
+import 'package:leew_wallet/screens/wallet_setup/new_wallet/widgets/AllSteps/step3/step3.dart';
 
 import 'AllSteps/step2/step2a.dart';
 import 'AllSteps/step2/step2b.dart';

@@ -22,75 +22,73 @@ class TransactionItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              dateAndTime,
-              style: const TextStyle(color: Colors.grey, fontSize: 14),
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            dateAndTime,
+            style: const TextStyle(color: Colors.grey, fontSize: 14),
+          ),
+          ListTile(
+            onTap: () {
+              showTransactionBottomSheet(
+                  context,
+                  transactionType,
+                  transactionAmount,
+                  dollarAmount,
+                  tokenAbbreviation,
+                  status,
+                  dateAndTime);
+            },
+            visualDensity: VisualDensity.standard,
+            contentPadding: const EdgeInsets.symmetric(vertical: 10),
+            title: Text(
+              "$transactionType $tokenAbbreviation",
+              style: const TextStyle(
+                  fontSize: 18,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w500),
             ),
-            ListTile(
-              onTap: () {
-                showTransactionBottomSheet(
-                    context,
-                    transactionType,
-                    transactionAmount,
-                    dollarAmount,
-                    tokenAbbreviation,
-                    status,
-                    dateAndTime);
-              },
-              visualDensity: VisualDensity.standard,
-              contentPadding: const EdgeInsets.symmetric(vertical: 10),
-              title: Text(
-                "$transactionType $tokenAbbreviation",
-                style: const TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500),
-              ),
-              leading: Icon(
-                transactionType == "Sent" ? Icons.send : Icons.wallet,
-                color: Colors.white,
-                size: 30,
-              ),
-              trailing: Container(
-                margin: const EdgeInsets.all(5),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      "$transactionAmount $tokenAbbreviation",
-                      style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    Text(
-                      "\$ $dollarAmount",
-                      style: const TextStyle(
-                          color: Colors.grey,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400),
-                    ),
-                  ],
-                ),
-              ),
-              subtitle: status
-                  ? const Text(
-                      "Confirmed",
-                      style: TextStyle(color: Colors.green),
-                    )
-                  : const Text(
-                      "Cancelled",
-                      style: TextStyle(color: Colors.red),
-                    ),
+            leading: Icon(
+              transactionType == "Sent" ? Icons.send : Icons.wallet,
+              color: Colors.white,
+              size: 30,
             ),
-          ],
-        ),
+            trailing: Container(
+              margin: const EdgeInsets.all(5),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(
+                    "$transactionAmount $tokenAbbreviation",
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500),
+                  ),
+                  Text(
+                    "\$ $dollarAmount",
+                    style: const TextStyle(
+                        color: Colors.grey,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400),
+                  ),
+                ],
+              ),
+            ),
+            subtitle: status
+                ? const Text(
+                    "Confirmed",
+                    style: TextStyle(color: Colors.green),
+                  )
+                : const Text(
+                    "Cancelled",
+                    style: TextStyle(color: Colors.red),
+                  ),
+          ),
+        ],
       ),
     );
   }

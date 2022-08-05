@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
-import 'step3/completed.dart';
+import 'completed.dart';
 
 class Step3 extends StatefulWidget {
   const Step3({Key? key}) : super(key: key);
