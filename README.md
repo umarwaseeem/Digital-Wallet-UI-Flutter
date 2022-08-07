@@ -1,3 +1,3 @@
 # Leew Safe
 
-A digital currency wallet with a great UI.
+A digital / crypto currency wallet with a great UI.
