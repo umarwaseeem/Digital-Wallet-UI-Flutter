@@ -2,5 +2,8 @@
 
 A digital / crypto currency wallet with a great UI.
 
-- Publishing this app without permission is not allowed.
-
+<p>
+<img src = "home.png" >
+<img src = "add.png" >
+<img src = "network.png" >
+<p>
